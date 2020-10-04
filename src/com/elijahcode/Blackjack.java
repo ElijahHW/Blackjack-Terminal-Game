@@ -6,33 +6,31 @@ import java.util.concurrent.TimeUnit;
 public class Blackjack {
 
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("Let's play Blackjack!");
 
-        System.out.println("Welcome to Blackjack!");
-
-        //playingDeck will be the deck the dealer holds
-        Deck playingDeck = new Deck();
-        playingDeck.createFullDeck();
-        playingDeck.shuffle();
-
-        //playerCards will be the cards the player has in their hand
-        Deck playerCards = new Deck();
-        //playerMoney holds players cash
-        double playerMoney = 100.0;
-        //dealerCards will be the cards the dealer has in their hand
-        Deck dealerCards = new Deck();
+        //Setting playing deck..
+            Deck playingDeck = new Deck();
+            playingDeck.createFullDeck();
+            playingDeck.shuffle();
+        //playerCards - will be the cards the player has in their hand
+            Deck playerCards = new Deck();
+        //playerMoney - holds amount of cash for player
+            int playerMoney = (int) 100.00;
+        //dealerCards - the cards the dealer has in their hand
+            Deck dealerCards = new Deck();
 
         //Scanner for user input
         Scanner userInput = new Scanner(System.in);
 
-        //Play the game while the player has money
+        //Play the game as long as playerMoney is grater than zero
         //Game loop
-        while(playerMoney>0){
-            //Take Bet
+        while (playerMoney > 0){
+            //Let player place bet
             System.out.println("You have $" + playerMoney + ", how much would you like to bet?");
-            double playerBet = userInput.nextDouble();
+            int playerBet = (int) userInput.nextDouble();
             boolean endRound = false;
-            if(playerBet > playerMoney){
-                //Break if they bet too much
+            //Exit if player tries to bet more than they have
+            if (playerBet > playerMoney){
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println("You cannot bet more than you have.");
                 break;
@@ -67,23 +65,19 @@ public class Blackjack {
                 //They hit
                 if(response == 1){
                     playerCards.draw(playingDeck);
-                    System.out.println("You draw a:" + playerCards.getCard(playerCards.deckSize()-1).toString());
-                    TimeUnit.SECONDS.sleep(1);
+                    System.out.println("You draw a: " + playerCards.getCard(playerCards.deckSize()-1).toString());
                     //Bust if they go over 21
                     if(playerCards.cardsValue() > 21){
                         System.out.println("Bust. Currently valued at: " + playerCards.cardsValue());
-                        TimeUnit.SECONDS.sleep(1);
                         playerMoney -= playerBet;
                         endRound = true;
                         break;
                     }
                 }
-
                 //Stand
                 if(response == 2){
                     break;
                 }
-
             }
 
             //Reveal Dealer Cards
@@ -130,13 +124,11 @@ public class Blackjack {
                 TimeUnit.SECONDS.sleep(1);
                 playerMoney -= playerBet;
             }
-
             //End of hand - put cards back in deck
             playerCards.moveAllToDeck(playingDeck);
             dealerCards.moveAllToDeck(playingDeck);
             System.out.println("End of Hand.");
             TimeUnit.SECONDS.sleep(1);
-
         }
         //Game is over
         System.out.println("Game over! You lost all your money. :(");
@@ -144,8 +136,5 @@ public class Blackjack {
 
         //Close Scanner
         userInput.close();
-
     }
-
-
 }

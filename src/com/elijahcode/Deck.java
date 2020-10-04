@@ -11,7 +11,6 @@ public class Deck {
         this.cards = new ArrayList<Card>();
 
     }
-
     //Add 52 playing cards to a deck
     public void createFullDeck(){
         //Generate Cards
@@ -24,8 +23,6 @@ public class Deck {
             }
         }
     }
-
-
     //Shuffle deck of cards
     public void shuffle(){
         //Create a new arraylist to hold the shuffled cards temporarily
@@ -45,8 +42,6 @@ public class Deck {
         //set this.deck to our newly shuffled deck
         this.cards = tmpDeck;
     }
-
-
     //Remove a card from the deck
     public void removeCard(int i){
         this.cards.remove(i);
@@ -119,7 +114,6 @@ public class Deck {
                 case ACE: aces += 1; break;
             }
         }
-
         //Determine the total current value with aces
         //Aces worth 11 or 1 - if 11 would go over 21 make it worth 1
         for(int i = 0; i < aces; i++){
@@ -131,11 +125,7 @@ public class Deck {
                 totalValue += 11;
             }
         }
-
         //Return
         return totalValue;
-
     }
-
-
 }

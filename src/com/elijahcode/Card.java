@@ -2,8 +2,8 @@ package com.elijahcode;
 
 public class Card {
 
-    private Suit suit;
-    private Value value;
+    private final Suit suit;
+    private final Value value;
 
     public Card(Suit suit, Value value){
         this.suit = suit;
@@ -11,7 +11,7 @@ public class Card {
     }
 
     public String toString(){
-        return this.value.toString() + " of " + this.suit.getIcon();
+        return this.value.toString() + " of " + this.suit.toString();
     }
 
     public Value getValue(){
