@@ -36,9 +36,9 @@ public class Blackjack {
             boolean endRound = false;
             //Exit if player tries to bet more than they have
             if (playerBet > balance){
-                System.out.println("You cannot bet more than you have.");
+                System.out.println("You cannot bet more than you have, try again...");
                 TimeUnit.SECONDS.sleep(1);
-                break;
+                continue gameLoop;
             }
             System.out.println("Dealing cards...");
             TimeUnit.SECONDS.sleep(2);
@@ -95,7 +95,7 @@ public class Blackjack {
                     System.out.println("End of Hand.");
                     TimeUnit.SECONDS.sleep(1);
 
-                    System.out.println("You choose to surrender, you return with half of your bet... your balance is now $" + balance);
+                    System.out.println("You choose to surrender, you return with half of your bet... your balance is now $" + Flavor.GREEN_BOLD + balance + Flavor.RESET);
                     System.out.println("You can choose to, (1)bet again or (2)call it a day");
                     //Reads userInput choice, (1)bet again or (2)call it a day.
                     int responseTwo = userInput.nextInt();
@@ -142,7 +142,7 @@ public class Blackjack {
             }
             //Determine if player wins
             if((playerCards.cardsValue() > dealerCards.cardsValue()) && !endRound){
-                System.out.println("You win the hand.");
+                System.out.println(Flavor.GREEN_UNDERLINED + "You win the hand." + Flavor.RESET);
                 TimeUnit.SECONDS.sleep(1);
                 balance += playerBet;
             }
@@ -159,7 +159,7 @@ public class Blackjack {
             TimeUnit.SECONDS.sleep(1);
         }
         //Game is over
-        System.out.println("You loose! :(");
+        System.out.println(Flavor.RED_UNDERLINED + "You loose! :(" + Flavor.RESET);
         TimeUnit.SECONDS.sleep(1);
         //Close Scanner
         userInput.close();
