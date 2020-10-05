@@ -17,7 +17,7 @@ public enum Flavor {
     // Bold
     BLACK_BOLD("\033[1;30m"),   // BLACK
     RED_BOLD("\033[1;31m"),     // RED
-    GREEN_BOLD("\033[1;32m"),   // GREEN
+    GREEN_BOLD("\u001B[32m"),   // GREEN
     YELLOW_BOLD("\033[1;33m"),  // YELLOW
     BLUE_BOLD("\033[1;34m"),    // BLUE
     MAGENTA_BOLD("\033[1;35m"), // MAGENTA
