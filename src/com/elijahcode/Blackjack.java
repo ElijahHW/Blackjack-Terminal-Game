@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class Blackjack {
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println(Flavor.RED + "Let's play Blackjack!" + Flavor.RESET);
+        System.out.println(Flavor.BLUE + "Let's play Blackjack!" + Flavor.RESET);
 
         //Setting playing deck..
         Deck playingDeck = new Deck();
