@@ -27,6 +27,7 @@ public class Blackjack {
 
         //Play the game as long as balance is grater than zero
         //Game loop
+        gameLoop:
         while (balance > 0){
             //Let player place bet
             System.out.println("You have $" + balance + ", how much would you like to bet?");
@@ -39,7 +40,7 @@ public class Blackjack {
                 break;
             }
 
-            System.out.println("Dealing...");
+            System.out.println("Dealing cards...");
             TimeUnit.SECONDS.sleep(2);
             //Player gets two cards
             playerCards.draw(playingDeck);
@@ -72,7 +73,7 @@ public class Blackjack {
                     System.out.println("You draw a: " + playerCards.getCard(playerCards.deckSize()-1).toString());
                     //Bust if they go over 21
                     if(playerCards.cardsValue() > 21){
-                        System.out.println("Bust. Currently valued at: " + playerCards.cardsValue());
+                        System.out.println("You Bust. Currently valued at: " + playerCards.cardsValue());
                         balance -= playerBet;
                         endRound = true;
                         break;
@@ -83,21 +84,31 @@ public class Blackjack {
                     break;
                 }
                 //User chooses (3)Surrender
-                else if(response == 3){
+                else if(response == 3) {
+                    //applies half of the bet to the current balance
                     playerBet = playerBet / 2;
                     balance -= playerBet;
-                    System.out.println("You choose to surrender, you return with half of your bet... your balance is now " + balance);
-                    TimeUnit.SECONDS.sleep(2);
-                    endRound = true;
-                    break;
-                }
 
-                /* System.out.println("You can choose to, (1)bet again or (2)call it a day");
-                if(response == 1){
-                    System.out.println("Type in the amount you want to bet, you have: " + balance + " left.");
-                }if(response == 2) {
-                    endRound = true;
-                    System.exit(0); */
+                    //End of hand - put cards back in deck
+                    playerCards.moveAllToDeck(playingDeck);
+                    dealerCards.moveAllToDeck(playingDeck);
+                    System.out.println("End of Hand.");
+                    TimeUnit.SECONDS.sleep(1);
+
+                    System.out.println("You choose to surrender, you return with half of your bet... your balance is now $" + balance);
+                    System.out.println("You can choose to, (1)bet again or (2)call it a day");
+                    //Reads userInput choice, (1)bet again or (2)call it a day.
+                    int responseTwo = userInput.nextInt();
+                    if (responseTwo == 1) {
+                        continue gameLoop;
+                    }
+                    if (responseTwo == 2) {
+                        System.out.println("Hope to see you another time!");
+                        TimeUnit.SECONDS.sleep(3);
+                        endRound = true;
+                        System.exit(0);
+                    }
+                }
             }
 
             //Reveal Dealer Cards
