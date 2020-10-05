@@ -8,7 +8,7 @@ public class Deck {
 
     public Deck(){
         //Create a new deck of playing cards
-        this.cards = new ArrayList<Card>();
+        this.cards = new ArrayList<>();
 
     }
     //Add 52 playing cards to a deck
@@ -26,14 +26,14 @@ public class Deck {
     //Shuffle deck of cards
     public void shuffle(){
         //Create a new arraylist to hold the shuffled cards temporarily
-        ArrayList<Card> tmpDeck = new ArrayList<Card>();
+        ArrayList<Card> tmpDeck = new ArrayList<>();
         //Randomly pick from the old deck and copy values to the new deck
         Random random = new Random();
-        int randomCardIndex = 0;
+        int randomCardIndex;
         int originalSize = this.cards.size();
         for(int i = 0; i<originalSize;i++){
             //gen random num according to int randomNum = rand.nextInt((max - min) + 1) + min;
-            randomCardIndex = random.nextInt((this.cards.size()-1 - 0) + 1) + 0;
+            randomCardIndex = random.nextInt((this.cards.size() - 1) + 1);
             //throw random card into new deck
             tmpDeck.add(this.cards.get(randomCardIndex));
             //remove picked from old deck
@@ -66,13 +66,11 @@ public class Deck {
 
     //Use to print out deck
     public String toString(){
-        String cardListOutput = "";
-        int i = 0;
+        StringBuilder cardListOutput = new StringBuilder();
         for(Card aCard : this.cards){
-            cardListOutput += "\n" + aCard.toString();
-            i++;
+            cardListOutput.append("\n").append(aCard.toString());
         }
-        return cardListOutput;
+        return cardListOutput.toString();
     }
 
     public void moveAllToDeck(Deck moveTo){
@@ -107,10 +105,11 @@ public class Deck {
                 case SEVEN: totalValue += 7; break;
                 case EIGHT: totalValue += 8; break;
                 case NINE: totalValue += 9; break;
-                case TEN: totalValue += 10; break;
-                case JACK: totalValue += 10; break;
-                case QUEEN: totalValue += 10; break;
-                case KING: totalValue += 10; break;
+                case TEN:
+                case JACK:
+                case QUEEN:
+                case KING:
+                    totalValue += 10; break;
                 case ACE: aces += 1; break;
             }
         }

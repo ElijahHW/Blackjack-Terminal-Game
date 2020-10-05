@@ -39,7 +39,6 @@ public class Blackjack {
                 TimeUnit.SECONDS.sleep(1);
                 break;
             }
-
             System.out.println("Dealing cards...");
             TimeUnit.SECONDS.sleep(2);
             //Player gets two cards
@@ -110,16 +109,12 @@ public class Blackjack {
                     }
                 }
             }
-
             //Reveal Dealer Cards
             System.out.println("Dealer Cards:" + dealerCards.toString());
             TimeUnit.SECONDS.sleep(1);
             //See if dealer has more points than player
             if((dealerCards.cardsValue() > playerCards.cardsValue()) && !endRound){
                 System.out.println("Dealer beats you " + dealerCards.cardsValue() + " to " + playerCards.cardsValue());
-                TimeUnit.SECONDS.sleep(1);
-                balance -= playerBet;
-                endRound = true;
                 break;
             }
             //Dealer hits at 16 stands at 17
@@ -163,9 +158,8 @@ public class Blackjack {
             TimeUnit.SECONDS.sleep(1);
         }
         //Game is over
-        System.out.println("Game over! :(");
+        System.out.println("You loose! :(");
         TimeUnit.SECONDS.sleep(1);
-
         //Close Scanner
         userInput.close();
     }
