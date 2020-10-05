@@ -3,13 +3,14 @@
 //https://en.wikipedia.org/wiki/Glossary_of_blackjack_terms
 
 package com.elijahcode;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Blackjack {
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("Let's play Blackjack!");
+        System.out.println(Flavor.RED + "Let's play Blackjack!" + Flavor.RESET);
 
         //Setting playing deck..
         Deck playingDeck = new Deck();
@@ -30,7 +31,7 @@ public class Blackjack {
         gameLoop:
         while (balance > 0){
             //Let player place bet
-            System.out.println("You have $" + balance + ", how much would you like to bet?");
+            System.out.println("You have" + Flavor.GREEN_BOLD + " $" + balance + Flavor.RESET + ", how much would you like to bet?");
             int playerBet = (int) userInput.nextDouble();
             boolean endRound = false;
             //Exit if player tries to bet more than they have

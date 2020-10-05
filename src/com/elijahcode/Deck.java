@@ -3,15 +3,16 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
-
+    //Creating the Instance
     private ArrayList<Card> cards;
-
+    //Constructor
     public Deck(){
         //Create a new deck of playing cards
         this.cards = new ArrayList<>();
 
     }
-    //Add 52 playing cards to a deck
+    //Generating the deck,
+    //adding 52 playing cards to the deck
     public void createFullDeck(){
         //Generate Cards
         //Loop Through Suits
