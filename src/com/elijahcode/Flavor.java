@@ -1,7 +1,8 @@
 package com.elijahcode;
 
 public enum Flavor {
-    //Color reset
+    //Color reset-color
+    //A lot of these are not used, but might use them in the future...
     RESET("\033[0m"),
 
     // Regular Colors
@@ -40,7 +41,7 @@ public enum Flavor {
         this.code = code;
     }
 
-    @Override
+    @Override //cos theres already a toString in enum.java
     public String toString() {
         return code;
     }
