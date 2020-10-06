@@ -1,4 +1,3 @@
-# BlackjackApp
 # BlackJackApp made in Java ☕
 ![Alt text](demo.png)
 
