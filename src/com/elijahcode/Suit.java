@@ -6,7 +6,7 @@ public enum Suit {
     DIAMONDS(Flavor.RED_BOLD + "♦" + Flavor.RESET),
     CLUBS(Flavor.BLACK_BOLD + "♣" + Flavor.RESET);
 
-    private String icon;
+    private final String icon;
 
     Suit(String icon) {
         this.icon = icon;
@@ -16,3 +16,4 @@ public enum Suit {
         return icon;
     }
 }
+

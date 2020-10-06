@@ -10,16 +10,33 @@ import java.util.concurrent.TimeUnit;
 public class Blackjack {
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println(Flavor.BLUE + "Let's play Blackjack!" + Flavor.RESET);
+        System.out.println(Flavor.BLUE_BOLD +
+                "    ____  __    ___   ________ __    _____   ________ __\n" +
+                "   / __ )/ /   /   | / ____/ //_/   / /   | / ____/ //_/\n" +
+                "  / __  / /   / /| |/ /   / ,< __  / / /| |/ /   / ,<   \n" +
+                " / /_/ / /___/ ___ / /___/ /| / /_/ / ___ / /___/ /| |  \n" +
+                "/_____/_____/_/  |_\\____/_/ |_\\____/_/  |_\\____/_/ |_|  \n");
+        System.out.println("~~Instructions~~");
+        System.out.println("~ Dealer will stand on 17 and above,");
+        System.out.println("~ hole card = hidden card.");
+        System.out.println("----------------------------------------------" + Flavor.RESET);
+
+        //Pre-config for data
+        int totalWins = 0;
+        int totalLosses = 0;
+        int totalPlays;
 
         //Setting playing deck..
         Deck playingDeck = new Deck();
         playingDeck.createFullDeck();
         playingDeck.shuffle();
+
         //playerCards - will be the cards the player has in their hand
         Deck playerCards = new Deck();
+
         //balance - holds amount of cash/credits for player
         int balance = (int) 100.00;
+
         //dealerCards - the cards the dealer has in their hand
         Deck dealerCards = new Deck();
 
@@ -40,8 +57,16 @@ public class Blackjack {
                 TimeUnit.SECONDS.sleep(1);
                 continue gameLoop;
             }
-            System.out.println("Dealing cards...");
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
+            System.out.print("Dealing cards.");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.print(".");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.print(".");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.print(".");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println(".");
             //Player gets two cards
             playerCards.draw(playingDeck);
             playerCards.draw(playingDeck);
@@ -53,14 +78,17 @@ public class Blackjack {
             //While loop for drawing new cards
             while(true){
                 //Display player cards
-                System.out.println("Your Hand:" + playerCards.toString());
+                System.out.println("────────────────────");
+                System.out.println(Flavor.BLACK_BOLD + "Your Hand:" + Flavor.RESET + playerCards.toString());
                 TimeUnit.SECONDS.sleep(1);
                 //Display Value
                 System.out.println("Your hand is currently valued at: " + playerCards.cardsValue());
-                TimeUnit.SECONDS.sleep(1);
-                //Display dealer cards
-                System.out.println("Dealer Hand: " + dealerCards.getCard(0).toString() + " + [hole card]");
                 TimeUnit.SECONDS.sleep(2);
+                //Display dealer cards
+                System.out.println("────────────────────");
+                System.out.println("Dealer Hand: " + dealerCards.getCard(0).toString() + " + [hole card]");
+                System.out.println("────────────────────");
+                TimeUnit.SECONDS.sleep((long) 1.5);
                 
                 //What do they want to do
                 System.out.println("Would you like to (1)Hit, (2)Stand, (3)Surrender");
@@ -71,20 +99,23 @@ public class Blackjack {
                 if(response == 1){
                     playerCards.draw(playingDeck);
                     System.out.println("You draw a: " + playerCards.getCard(playerCards.deckSize()-1).toString());
+                    TimeUnit.SECONDS.sleep(2);
                     //Bust if they go over 21
                     if(playerCards.cardsValue() > 21){
-                        System.out.println("You Bust. Currently valued at: " + playerCards.cardsValue());
+                        System.out.println(Flavor.RED_BOLD + "You Bust. " + Flavor.RESET + "Currently valued at: " + playerCards.cardsValue());
+                        TimeUnit.SECONDS.sleep(2);
                         balance -= playerBet;
+                        totalLosses++;
                         endRound = true;
                         break;
                     }
                 }
                 //User chooses (2)Stand
-                else if(response == 2){
+                if(response == 2){
                     break;
                 }
                 //User chooses (3)Surrender
-                else if(response == 3) {
+                if(response == 3) {
                     //applies half of the bet to the current balance
                     playerBet = playerBet / 2;
                     balance -= playerBet;
@@ -92,7 +123,7 @@ public class Blackjack {
                     //End of hand - put cards back in deck
                     playerCards.moveAllToDeck(playingDeck);
                     dealerCards.moveAllToDeck(playingDeck);
-                    System.out.println("End of Hand.");
+                    System.out.println(Flavor.BLACK_BOLD + "End of Hand." + Flavor.RESET);
                     TimeUnit.SECONDS.sleep(1);
 
                     System.out.println("You choose to surrender, you return with half of your bet... your balance is now $" + Flavor.GREEN_BOLD + balance + Flavor.RESET);
@@ -111,12 +142,14 @@ public class Blackjack {
                 }
             }
             //Reveal Dealer Cards
+            System.out.println("────────────────────");
             System.out.println("Dealer Cards:" + dealerCards.toString());
+            System.out.println("────────────────────");
             TimeUnit.SECONDS.sleep(1);
+
             //See if dealer has more points than player
             if((dealerCards.cardsValue() > playerCards.cardsValue()) && !endRound){
                 System.out.println("Dealer beats you " + dealerCards.cardsValue() + " to " + playerCards.cardsValue());
-                break;
             }
             //Dealer hits at 16 stands at 17
             while((dealerCards.cardsValue() < 17) && !endRound){
@@ -127,11 +160,13 @@ public class Blackjack {
             //Display value of dealer
             System.out.println("Dealers hand value: " + dealerCards.cardsValue());
             TimeUnit.SECONDS.sleep(1);
+
             //Determine if dealer busted
             if((dealerCards.cardsValue()>21)&& !endRound){
-                System.out.println("Dealer Busts. You win!");
+                System.out.println("Dealer Busts. " + Flavor.GREEN_BOLD + "You win!" + Flavor.RESET);
                 TimeUnit.SECONDS.sleep(1);
                 balance += playerBet;
+                totalWins++;
                 endRound = true;
             }
             //Determine if push
@@ -142,24 +177,31 @@ public class Blackjack {
             }
             //Determine if player wins
             if((playerCards.cardsValue() > dealerCards.cardsValue()) && !endRound){
-                System.out.println(Flavor.GREEN_UNDERLINED + "You win the hand." + Flavor.RESET);
+                System.out.println(Flavor.GREEN_BOLD + "You win the hand." + Flavor.RESET);
                 TimeUnit.SECONDS.sleep(1);
                 balance += playerBet;
+                totalWins++;
             }
             //dealer wins
             else if(!endRound){
                 System.out.println("Dealer wins.");
                 TimeUnit.SECONDS.sleep(1);
                 balance -= playerBet;
+                totalLosses++;
             }
             //End of hand - put cards back in deck
             playerCards.moveAllToDeck(playingDeck);
             dealerCards.moveAllToDeck(playingDeck);
-            System.out.println("End of Hand.");
+            System.out.println(Flavor.BLACK_BOLD + "End of Hand." + Flavor.RESET);
             TimeUnit.SECONDS.sleep(1);
+            totalPlays = totalWins + totalLosses;
+            System.out.println("You have played " + totalPlays + " time(s),");
+            System.out.println("With: " + totalWins + " wins" + " and " + totalLosses + " losses.");
+            int winPercentage = 100 * totalWins / totalPlays;
+            System.out.println("Your win percentage is: " + winPercentage + "%. ");
         }
         //Game is over
-        System.out.println(Flavor.RED_UNDERLINED + "You loose! :(" + Flavor.RESET);
+        System.out.println(Flavor.RED_BOLD + "You loose! :(" + Flavor.RESET);
         TimeUnit.SECONDS.sleep(1);
         //Close Scanner
         userInput.close();
