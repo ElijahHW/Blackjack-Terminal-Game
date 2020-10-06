@@ -1,7 +1,6 @@
 # BlackJackApp made in Java ☕
 ![Alt text](demo.png)
 
-#
 
 # Welcome to BlackJackApplication
 
