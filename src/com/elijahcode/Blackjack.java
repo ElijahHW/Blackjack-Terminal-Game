@@ -205,7 +205,7 @@ public class Blackjack {
 
             //Some stats
             System.out.println(" ");
-            System.out.println("────────────────────");
+            System.out.println("────────────────────────────────────────");
             System.out.println("Here are your stats:");
             System.out.println("You have played " + totalPlays + " time(s),");
             System.out.println("With: " + totalWins + " wins" + " and " + totalLosses + " losses.");
