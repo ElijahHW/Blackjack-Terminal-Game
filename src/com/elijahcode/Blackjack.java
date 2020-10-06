@@ -79,7 +79,7 @@ public class Blackjack {
             while(true){
                 //Display player cards
                 System.out.println("────────────────────");
-                System.out.println(Flavor.BLACK_BOLD + "Your Hand:" + Flavor.RESET + playerCards.toString());
+                System.out.println(Flavor.WHITE_BOLD + "Your Hand:" + Flavor.RESET + playerCards.toString());
                 TimeUnit.SECONDS.sleep(1);
                 //Display Value
                 System.out.println("Your hand is currently valued at: " + playerCards.cardsValue());
@@ -123,7 +123,7 @@ public class Blackjack {
                     //End of hand - put cards back in deck
                     playerCards.moveAllToDeck(playingDeck);
                     dealerCards.moveAllToDeck(playingDeck);
-                    System.out.println(Flavor.BLACK_BOLD + "End of Hand." + Flavor.RESET);
+                    System.out.println(Flavor.WHITE_BOLD + "End of Hand." + Flavor.RESET);
                     TimeUnit.SECONDS.sleep(1);
 
                     System.out.println("You choose to surrender, you return with half of your bet... your balance is now $" + Flavor.GREEN_BOLD + balance + Flavor.RESET);
@@ -192,9 +192,14 @@ public class Blackjack {
             //End of hand - put cards back in deck
             playerCards.moveAllToDeck(playingDeck);
             dealerCards.moveAllToDeck(playingDeck);
-            System.out.println(Flavor.BLACK_BOLD + "End of Hand." + Flavor.RESET);
+            System.out.println(Flavor.WHITE_BOLD + "End of Hand." + Flavor.RESET);
             TimeUnit.SECONDS.sleep(1);
             totalPlays = totalWins + totalLosses;
+
+            //Some stats
+            System.out.println(" ");
+            System.out.println("────────────────────");
+            System.out.println("Here are your stats:");
             System.out.println("You have played " + totalPlays + " time(s),");
             System.out.println("With: " + totalWins + " wins" + " and " + totalLosses + " losses.");
             int winPercentage = 100 * totalWins / totalPlays;
