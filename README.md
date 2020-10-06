@@ -1,10 +1,10 @@
 # BlackjackApp
-BlackJackApp made in Java ☕
+# BlackJackApp made in Java ☕
 ![Alt text](demo.png)
 
 #
 
-| Welcome to BlackJack
+# Welcome to BlackJackApplication
 
 | Glossary of blackjack terms used in this application can be found on this link:
 
