@@ -26,7 +26,6 @@ public class Deck {
     //Shuffle deck of cards
      public void shuffle() {
          Collections.shuffle(cards);
-        for (int i = 0; i <= cards.size()-1;i++); //Unsure if an empty for loop is bad or not...?
     }
     //Remove a card from the deck
     public void removeCard(int i){

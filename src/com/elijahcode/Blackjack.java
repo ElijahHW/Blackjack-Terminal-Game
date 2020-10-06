@@ -63,6 +63,7 @@ public class Blackjack {
                 TimeUnit.SECONDS.sleep(1);
                 continue gameLoop;
             }
+            //Dealing cards (loading animation)
             TimeUnit.SECONDS.sleep(1);
             System.out.print("Dealing cards.");
             TimeUnit.SECONDS.sleep(1);
