@@ -202,11 +202,11 @@ public class Blackjack {
             System.out.println("Here are your stats:");
             System.out.println("You have played " + totalPlays + " time(s),");
             System.out.println("With: " + totalWins + " wins" + " and " + totalLosses + " losses.");
-            int winPercentage = 100 * totalWins / totalPlays;
-            System.out.println("Your win percentage is: " + winPercentage + "%. ");
+            int winRate = 100 * totalWins / totalPlays;
+            System.out.println("Your win rate is: " + winRate + "%. ");
         }
         //Game is over
-        System.out.println(Flavor.RED_BOLD + "You loose! :(" + Flavor.RESET);
+        System.out.println(Flavor.RED_BOLD + "You loose! You're out of credits :(" + Flavor.RESET);
         TimeUnit.SECONDS.sleep(1);
         //Close Scanner
         userInput.close();
