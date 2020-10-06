@@ -90,7 +90,7 @@ public class Blackjack {
                 TimeUnit.SECONDS.sleep(1);
                 //Display Value
                 System.out.println("Your hand is currently valued at: " + playerCards.cardsValue());
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(1);
                 //Display dealer cards
                 System.out.println("────────────────────");
                 System.out.println("Dealer Hand: " + dealerCards.getCard(0).toString() + " + [hole card]");
@@ -217,5 +217,8 @@ public class Blackjack {
         TimeUnit.SECONDS.sleep(1);
         //Close Scanner
         userInput.close();
+    }
+
+    private static class Loader {
     }
 }
