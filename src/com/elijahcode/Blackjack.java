@@ -17,6 +17,12 @@ public class Blackjack {
                 " / /_/ / /___/ ___ / /___/ /| / /_/ / ___ / /___/ /| |  \n" +
                 "/_____/_____/_/  |_\\____/_/ |_\\____/_/  |_\\____/_/ |_|  \n");
         System.out.println("~~Instructions~~");
+        System.out.println(
+                "Cards 2-10 are worth the value of the number on the face of the card." + "\n" +
+                "Numbered cards are worth the corresponding number indicated on the card. " + "\n" +
+                "Face cards (those with pictures on them) are worth 10, except for the Ace, which is worth 1 or 11. " + "\n" +
+                "A picture combined with an Ace is Blackjack (a value of 21).");
+        System.out.println("If both the player and the dealer hits 21, it ends in a draw, also called push.");
         System.out.println("~ Dealer will stand on 17 and above,");
         System.out.println("~ hole card = hidden card.");
         System.out.println("----------------------------------------------" + Flavor.RESET);
