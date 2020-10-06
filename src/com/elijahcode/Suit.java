@@ -1,10 +1,10 @@
 package com.elijahcode;
 
 public enum Suit {
-    SPADES("♠"),
-    HEARTS("♥"),
-    DIAMONDS("♦"),
-    CLUBS("♣");
+    SPADES(Flavor.BLACK_BOLD + "♠" + Flavor.RESET),
+    HEARTS(Flavor.RED_BOLD + "♥" + Flavor.RESET),
+    DIAMONDS(Flavor.RED_BOLD + "♦" + Flavor.RESET),
+    CLUBS(Flavor.BLACK_BOLD + "♣" + Flavor.RESET);
 
     private String icon;
 
