@@ -31,6 +31,7 @@ public class Blackjack {
         int totalWins = 0;
         int totalLosses = 0;
         int totalPlays;
+        int winRate;
 
         //Setting playing deck..
         Deck playingDeck = new Deck();
@@ -209,7 +210,10 @@ public class Blackjack {
             System.out.println("Here are your stats:");
             System.out.println("You have played " + totalPlays + " time(s),");
             System.out.println("With: " + totalWins + " wins" + " and " + totalLosses + " losses.");
-            int winRate = 100 * totalWins / totalPlays;
+            winRate = 100 * totalWins / totalPlays;
+            if(winRate == 0) {
+                System.out.println("You have no wins");
+            }
             System.out.println("Your win rate is: " + winRate + "%. ");
         }
         //Game is over
@@ -219,6 +223,4 @@ public class Blackjack {
         userInput.close();
     }
 
-    private static class Loader {
-    }
 }
