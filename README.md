@@ -1,4 +1,4 @@
-# BlackJackApp made in Java ☕
+# BlackJackApp made in Java ♠️
 ![Alt text](demo.png)
 
 
