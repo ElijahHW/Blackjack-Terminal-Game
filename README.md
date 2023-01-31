@@ -2,7 +2,6 @@
 ![Alt text](demo.png)
 
 
-# Welcome to BlackJackApplication
 🕹️ Try the application here: https://repl.it/@ElijahBeGood/BlackjackApp#README.md
 
 📚 Glossary of blackjack terms used in this application can be found on this link:
